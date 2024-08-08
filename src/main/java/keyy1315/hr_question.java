@@ -3,12 +3,13 @@ package keyy1315;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class hr_question {
     hr_data_manage hrManage = new hr_data_manage();
-    connectionData connectionData = new connectionData();
     BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
     public void hr_question_start() throws IOException {
         bw.write("==== 인적 자원 관리 시스템 ====");
 
@@ -64,6 +65,45 @@ public class hr_question {
         }
     }
 
+    private void hr_show_data() throws IOException {
+        bw.write("==== 부서별 월별 근태 현황 ====");
+        Map<Integer, String> deptMap = hrManage.findAllDept();
+        for (Integer i : deptMap.keySet()) {
+            bw.write("부서: "+deptMap.get(i)+"\n");
+            bw.write("2024년 8월 근태 현황:");
+
+        }
+
+    }
+
+    private void hr_delete_data() throws IOException{
+        List<String> deleteList = new ArrayList<>();
+        bw.write("==== 근태 삭제====");
+
+        bw.write("직원 ID 입력: [EX: 12345]");
+        deleteList.add(bf.readLine());
+        bw.write("날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01]");
+        deleteList.add(bf.readLine());
+
+        hrManage.deleteData(deleteList);
+    }
+
+    private void hr_modify_data() throws IOException{
+        List<String> modifyList = new ArrayList<>();
+        bw.write("==== 근태 입력 ====");
+
+        bw.write("직원 ID 입력 : [EX: 12345]");
+        modifyList.add(bf.readLine());
+
+        bw.write("날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01]");
+        modifyList.add(bf.readLine());
+
+        bw.write("근무 상태 입력 (출근/퇴근/휴가 등): [EX: 출근]");
+        modifyList.add(bf.readLine());
+
+        hrManage.modifyData(modifyList);
+    }
+
     private void hr_insert_data() throws IOException{
         List<String> insertList = new ArrayList<>();
         bw.write("==== 근태 입력 ====");
@@ -76,5 +116,12 @@ public class hr_question {
 
         bw.write("근무 상태 입력 (출근/퇴근/휴가 등): [EX: 출근]");
         insertList.add(bf.readLine());
+        
+        if(hrManage.insertData(insertList)==1) {
+            bw.write("데이터 입력 완료");
+        } else {
+            bw.write("데이터 입력 실패 메인 메뉴로 돌아갑니다.");
+            hr_question_start();
+        }
     }
 }
