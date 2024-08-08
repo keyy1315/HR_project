@@ -11,21 +11,22 @@ public class hr_question {
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
     public void hr_question_start() throws IOException {
-        bw.write("==== 인적 자원 관리 시스템 ====\n");
+        bw.write("==== 인적 자원 관리 시스템 ====");
+        bw.newLine();
 
         bw.write("1. 근태 관리 *\n" +
                 "0. 종료 *\n" +
                 "선택하세요 : ");
-        bw.flush(); // flush 추가
+        bw.flush();
 
         int selectNum = Integer.parseInt(bf.readLine());
         if(selectNum==1) hr_question_manage();
         else if(selectNum==0) hr_question_end();
         else {
             bw.write("잘못입력하셨습니다. 다시 입력하세요");
+            bw.flush();
             hr_question_start();
         }
-        bw.flush();
     }
     public void hr_question_end() throws IOException{
         bw.write("...");
@@ -33,7 +34,8 @@ public class hr_question {
     }
 
     public void hr_question_manage() throws IOException {
-            bw.write("==== 근태 관리 ====\n");
+            bw.write("==== 근태 관리 ====");
+            bw.newLine();
 
             bw.write("1. 근태 입력 (option)\n" +
                     "2. 근태 수정 *\n" +
@@ -41,7 +43,7 @@ public class hr_question {
                     "4. 부서별 월별 근태 현황 보기 *\n" +
                     "0. 메인 메뉴로 돌아가기 *\n" +
                     "\n" +
-                    "선택하세요: ");
+                    "선택하세요: \n");
             bw.flush();
             hr_question_select(Integer.parseInt(bf.readLine()));
     }
@@ -67,28 +69,26 @@ public class hr_question {
     }
 
     private void hr_show_data() throws IOException {
-        bw.write("==== 부서별 월별 근태 현황 ====\n");
+        bw.write("==== 부서별 월별 근태 현황 ====");
+        bw.newLine();
         Map<Integer, String> deptMap = hrManage.findAllDept();
         for (Integer i : deptMap.keySet()) {
             bw.write("부서: "+deptMap.get(i)+"\n");
             bw.write("2024년 8월 근태 현황:");
 
         }
-        bw.flush(); // flush 추가
 
     }
 
     private void hr_delete_data() throws IOException{
         List<String> deleteList = new ArrayList<>();
-        bw.write("==== 근태 삭제====\n");
-        bw.flush(); // flush 추가
+        bw.write("==== 근태 삭제====");
 
         bw.write("직원 ID 입력: [EX: 12345]");
-        bw.flush(); // flush 추가
+        bw.flush();
         deleteList.add(bf.readLine());
-
         bw.write("날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01]");
-        bw.flush(); // flush 추가
+        bw.flush();
         deleteList.add(bf.readLine());
 
         hrManage.deleteData(deleteList);
@@ -96,18 +96,18 @@ public class hr_question {
 
     private void hr_modify_data() throws IOException{
         List<String> modifyList = new ArrayList<>();
-        bw.write("==== 근태 입력 ====\n");
+        bw.write("==== 근태 입력 ====");
 
         bw.write("직원 ID 입력 : [EX: 12345]");
-        bw.flush(); // flush 추가
+        bw.flush();
         modifyList.add(bf.readLine());
 
         bw.write("날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01]");
-        bw.flush(); // flush 추가
+        bw.flush();
         modifyList.add(bf.readLine());
 
         bw.write("근무 상태 입력 (출근/퇴근/휴가 등): [EX: 출근]");
-        bw.flush(); // flush 추가
+        bw.flush();
         modifyList.add(bf.readLine());
 
         hrManage.modifyData(modifyList);
@@ -115,27 +115,27 @@ public class hr_question {
 
     private void hr_insert_data() throws IOException{
         List<String> insertList = new ArrayList<>();
-        bw.write("==== 근태 입력 ====\n");
+        bw.write("==== 근태 입력 ====");
 
         bw.write("직원 ID 입력 : [EX: 12345]");
-        bw.flush(); // flush 추가
+        bw.flush();
         insertList.add(bf.readLine());
 
         bw.write("날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01]");
-        bw.flush(); // flush 추가
+        bw.flush();
         insertList.add(bf.readLine());
 
         bw.write("근무 상태 입력 (출근/퇴근/휴가 등): [EX: 출근]");
-        bw.flush(); // flush 추가
+        bw.flush();
         insertList.add(bf.readLine());
         
         if(hrManage.insertData(insertList)==1) {
             bw.write("데이터 입력 완료");
+            bw.flush();
         } else {
-            bw.write("데이터 입력 실패 메인 메뉴로 돌아갑니다.\n");
-            hr_question_start();
+            bw.write("데이터 입력 실패 종료합니다.");
+            bw.flush();
+            hr_question_end();
         }
-
-        bw.flush(); // flush 추가
     }
 }
