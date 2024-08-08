@@ -2,6 +2,7 @@ package keyy1315;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -72,12 +73,23 @@ public class hr_question {
         bw.write("==== 부서별 월별 근태 현황 ====");
         bw.newLine();
         Map<Integer, String> deptMap = hrManage.findAllDept();
+//        모든 부서
+        Map<String, String> userMap = hrManage.findUserByDeptId();
         for (Integer i : deptMap.keySet()) {
             bw.write("부서: "+deptMap.get(i)+"\n");
             bw.write("2024년 8월 근태 현황:");
-
+            bw.flush();
+            for (String s : userMap.keySet()) {
+                bw.write(" - 직원 ID: "+s);
+                bw.write(", 직원 이름: "+userMap.get(s)+"\n");
+                Map<String, Integer> workList = hrManage.setWorkMap(s);
+                bw.write("  - 출근율 : "+workList.get("출근율")+"% \n");
+                bw.write("  - 출근 : "+workList.get("출근")+"일 ");
+                bw.write("  - 결근 : "+workList.get("결근")+"일 ");
+                bw.write("  - 휴가 : "+workList.get("휴가")+"일 \n");
+                bw.flush();
+            }
         }
-
     }
 
     private void hr_delete_data() throws IOException{
@@ -133,6 +145,8 @@ public class hr_question {
         if(hrManage.insertData(insertList)==1) {
             bw.write("데이터 입력 완료");
             bw.flush();
+            hr_question_manage();
+//            입력 후 메뉴 선택으로 돌아감
         } else {
             bw.write("데이터 입력 실패 종료합니다.");
             bw.flush();
