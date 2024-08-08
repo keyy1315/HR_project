@@ -66,6 +66,7 @@ public class hr_data_manage {
                 System.out.println(rs.getString("User_id"));
             }
 
+
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
