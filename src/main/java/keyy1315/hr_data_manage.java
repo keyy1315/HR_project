@@ -29,6 +29,29 @@ public class hr_data_manage {
     }
 
     public void modifyData(List<String> modifyList) {
+
+        String sql = "UPDATE Attend SET status = ? WHERE User_id = ? AND Date = ?";
+
+        try (Connection conn = connectionData.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // SQL 쿼리의 플레이스홀더에 값 설정
+            pstmt.setString(1, modifyList.get(2));
+            pstmt.setString(2, modifyList.get(0));
+            pstmt.setString(3, modifyList.get(1));
+
+            // 쿼리 실행
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("데이터 수정 완료.");
+            } else {
+                System.out.println("수정할 데이터가 없습니다.");
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("데이터 수정 오류: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void deleteData(List<String> deleteList) {

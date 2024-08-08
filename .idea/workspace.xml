@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3859fc79-5426-442a-8112-d70a065ef30e" name="Changes" comment="sql schema, insert">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/keyy1315/hr_data_manage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keyy1315/hr_data_manage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/keyy1315/hr_question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keyy1315/hr_question.java" afterDir="false" />
@@ -126,7 +125,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1723097421226</updated>
-      <workItem from="1723097422297" duration="5643000" />
+      <workItem from="1723097422297" duration="6912000" />
     </task>
     <task id="LOCAL-00001" summary="sql schema, insert">
       <option name="closed" value="true" />
@@ -136,7 +135,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723099537085</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="sql schema, insert">
+      <option name="closed" value="true" />
+      <created>1723103787073</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1723103787073</updated>
+    </task>
+    <task id="LOCAL-00003" summary="sql schema, insert">
+      <option name="closed" value="true" />
+      <created>1723104711592</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723104711592</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -43,7 +43,7 @@ public class hr_question {
                     "4. 부서별 월별 근태 현황 보기 *\n" +
                     "0. 메인 메뉴로 돌아가기 *\n" +
                     "\n" +
-                    "선택하세요: \n");
+                    "선택하세요:");
             bw.flush();
             hr_question_select(Integer.parseInt(bf.readLine()));
     }
@@ -96,7 +96,8 @@ public class hr_question {
 
     private void hr_modify_data() throws IOException{
         List<String> modifyList = new ArrayList<>();
-        bw.write("==== 근태 입력 ====");
+        bw.write("==== 근태 수정 ====");
+        bw.newLine();
 
         bw.write("직원 ID 입력 : [EX: 12345]");
         bw.flush();
