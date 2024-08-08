@@ -10,10 +10,17 @@ CREATE TABLE User (
     FOREIGN KEY (Dept_id) REFERENCES Dept(Dept_id)
 );
 
-CREATE TABLE Attend(
-    Atd_no INT PRIMARY KEY,
-    User_id INT,
-    Date DATE,
-    status VARCHAR(10),
-    FOREIGN KEY (User_id) REFERENCES User(User_id)
+create table Attend
+(
+    Atd_no  int auto_increment
+        primary key,
+    User_id int         null,
+    Date    date        null,
+    status  varchar(10) null,
+    constraint Attend_ibfk_1
+        foreign key (User_id) references User (User_id)
 );
+
+create index User_id
+    on Attend (User_id);
+
