@@ -1141,7 +1141,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="293" parent="1" name="hr">
-      <LastIntrospectionLocalTimestamp>2024-08-08.06:24:42</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-08-08.07:53:09</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="294" parent="1" name="information_schema">
@@ -1205,6 +1205,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
     <column id="311" parent="308" name="Atd_no">
+      <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
