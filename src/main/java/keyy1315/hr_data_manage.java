@@ -2,6 +2,7 @@ package keyy1315;
 
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -97,7 +98,7 @@ public class hr_data_manage {
 
     public Map<String, Integer> setWorkMap(String s) {
 //        출근율, 출근, 결근, 휴가
-        Map<String, Integer> map = new LinkedHashMap<>();
+        Map<String, Integer> map = new HashMap<>();
 
         map.put("출근", findWorkdayByUserId(s,"출근"));
         map.put("결근", findWorkdayByUserId(s,"결근"));
