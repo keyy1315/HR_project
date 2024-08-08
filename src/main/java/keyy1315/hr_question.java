@@ -35,18 +35,18 @@ public class hr_question {
     }
 
     public void hr_question_manage() throws IOException {
-            bw.write("==== 근태 관리 ====");
-            bw.newLine();
+        bw.write("==== 근태 관리 ====");
+        bw.newLine();
 
-            bw.write("1. 근태 입력 (option)\n" +
-                    "2. 근태 수정 *\n" +
-                    "3. 근태 삭제 *\n" +
-                    "4. 부서별 월별 근태 현황 보기 *\n" +
-                    "0. 메인 메뉴로 돌아가기 *\n" +
-                    "\n" +
-                    "선택하세요: \n");
-            bw.flush();
-            hr_question_select(Integer.parseInt(bf.readLine()));
+        bw.write("1. 근태 입력 (option)\n" +
+                "2. 근태 수정 *\n" +
+                "3. 근태 삭제 *\n" +
+                "4. 부서별 월별 근태 현황 보기 *\n" +
+                "0. 메인 메뉴로 돌아가기 *\n" +
+                "\n" +
+                "선택하세요:");
+        bw.flush();
+        hr_question_select(Integer.parseInt(bf.readLine()));
     }
 
     public void hr_question_select(int s) throws IOException {
@@ -95,11 +95,11 @@ public class hr_question {
     private void hr_delete_data() throws IOException{
         List<String> deleteList = new ArrayList<>();
         bw.write("==== 근태 삭제====");
+        bw.newLine();
 
         bw.write("직원 ID 입력: [EX: 12345]");
         bw.flush();
         deleteList.add(bf.readLine());
-
         bw.write("날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01]");
         bw.flush();
         deleteList.add(bf.readLine());
@@ -109,7 +109,8 @@ public class hr_question {
 
     private void hr_modify_data() throws IOException{
         List<String> modifyList = new ArrayList<>();
-        bw.write("==== 근태 입력 ====");
+        bw.write("==== 근태 수정 ====");
+        bw.newLine();
 
         bw.write("직원 ID 입력 : [EX: 12345]");
         bw.flush();
@@ -141,7 +142,7 @@ public class hr_question {
         bw.write("근무 상태 입력 (출근/퇴근/휴가 등): [EX: 출근]");
         bw.flush();
         insertList.add(bf.readLine());
-        
+
         if(hrManage.insertData(insertList)==1) {
             bw.write("데이터 입력 완료");
             bw.flush();
