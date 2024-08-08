@@ -74,15 +74,15 @@ public class hr_question {
         bw.newLine();
         Map<Integer, String> deptMap = hrManage.findAllDept();
 //        모든 부서
-        Map<String, String> userMap = hrManage.findUserByDeptId();
         for (Integer i : deptMap.keySet()) {
             bw.write("부서: "+deptMap.get(i)+"\n");
             bw.write("2024년 8월 근태 현황:");
             bw.flush();
-            for (String s : userMap.keySet()) {
+            Map<Integer, String> userMap = hrManage.findUserByDeptId(String.valueOf(i));
+            for (Integer s : userMap.keySet()) {
                 bw.write(" - 직원 ID: "+s);
                 bw.write(", 직원 이름: "+userMap.get(s)+"\n");
-                Map<String, Integer> workList = hrManage.setWorkMap(s);
+                Map<String, Integer> workList = hrManage.setWorkMap(String.valueOf(s));
                 bw.write("  - 출근율 : "+workList.get("출근율")+"% \n");
                 bw.write("  - 출근 : "+workList.get("출근")+"일 ");
                 bw.write("  - 결근 : "+workList.get("결근")+"일 ");

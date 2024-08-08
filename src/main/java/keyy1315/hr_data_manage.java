@@ -77,23 +77,40 @@ public class hr_data_manage {
     }
 
     public Map<Integer, String> findAllDept() {
+        Map<Integer, String> map = new HashMap<>();
         try {
             Connection conn = connectionData.getConnection();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select User_id from Attend");
+            PreparedStatement stmt = conn.prepareStatement("select * from Dept ");
 
-            while (rs.next()) {
-                System.out.println(rs.getString("User_id"));
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                map.put(rs.getInt("Dept_id"),rs.getString("dept_Name"));
             }
-
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return map;
     }
 
-    public Map<String, String> findUserByDeptId() {
-        return null;
+    public Map<Integer, String> findUserByDeptId(String deptID) {
+        Map<Integer, String> map = new HashMap<>();
+        try {
+            Connection conn = connectionData.getConnection();
+            String SQL = "select User_id, user_Name from User where Dept_id = ?";
+
+            PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, deptID);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while(rs.next()) {
+                map.put(rs.getInt("User_id"),rs.getString("user_Name"));
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return map;
     }
 
     public Map<String, Integer> setWorkMap(String s) {
