@@ -1,0 +1,19 @@
+CREATE TABLE Dept (
+    Dept_id INT PRIMARY KEY,
+    dept_Name VARCHAR(50)
+);
+
+CREATE TABLE User (
+    User_id INT PRIMARY KEY,
+    Dept_id INT,
+    user_Name VARCHAR(50),
+    FOREIGN KEY (Dept_id) REFERENCES Dept(Dept_id)
+);
+
+CREATE TABLE Attend(
+    Atd_no INT PRIMARY KEY,
+    User_id INT,
+    Date DATE,
+    status VARCHAR(10),
+    FOREIGN KEY (User_id) REFERENCES User(User_id)
+);
