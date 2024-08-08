@@ -54,6 +54,25 @@ public class hr_data_manage {
     }
 
     public void deleteData(List<String> deleteList) {
+
+        String sql = "DELETE FROM Attend WHERE User_id = ? AND Date = ?";
+
+        try (Connection conn = connectionData.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, deleteList.get(0));
+            pstmt.setString(2, deleteList.get(1));
+
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("근태 정보가 삭제되었습니다.");
+            } else {
+                System.out.println("삭제할 근태 정보가 없습니다.");
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("데이터 삭제 오류: " + e.getMessage());
+        }
     }
 
     public Map<Integer, String> findAllDept() {
