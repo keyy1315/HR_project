@@ -10,17 +10,20 @@ import java.util.Map;
 
 public class hr_data_manage {
     connectionData connectionData = new connectionData();
+    int Atd_no = 10;
 
     public int insertData(List<String> insertList) {
         int r = 0;
-        String SQl = "insert into Attend(User_id, Date, status) values (?,?,?)";
+
+        String SQl = "insert into Attend(Atd_no, User_id, Date, status) values (?,?,?,?)";
         try{
             Connection conn = connectionData.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(SQl);
 
-            pstmt.setString(1,insertList.get(0));
-            pstmt.setString(2,insertList.get(1));
-            pstmt.setString(3,insertList.get(2));
+            pstmt.setString(1, String.valueOf(Atd_no));
+            pstmt.setString(2,insertList.get(0));
+            pstmt.setString(3,insertList.get(1));
+            pstmt.setString(4,insertList.get(2));
 
             r= pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -28,6 +31,7 @@ public class hr_data_manage {
         } catch (ClassNotFoundException e) {
             System.out.println("jdbc err : "+e.getMessage());
         }
+        Atd_no++;
         return r;
     }
 
