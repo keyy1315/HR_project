@@ -2,6 +2,7 @@ package keyy1315;
 
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,5 +49,45 @@ public class hr_data_manage {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    public Map<String, String> findUserByDeptId() {
+        return null;
+    }
+
+    public Map<String, Integer> setWorkMap(String s) {
+//        출근율, 출근, 결근, 휴가
+        Map<String, Integer> map = new LinkedHashMap<>();
+
+        map.put("출근", findWorkdayByUserId(s,"출근"));
+        map.put("결근", findWorkdayByUserId(s,"결근"));
+        map.put("휴가", findWorkdayByUserId(s,"휴가"));
+
+        int per = (map.get("출근") / (map.get("출근") + map.get("결근") + map.get("휴가"))) * 100;
+
+        map.put("출근율", per);
+
+        return map;
+    }
+
+    private int findWorkdayByUserId(String userID, String status) {
+        int workingDay = 0;
+        try {
+            Connection conn = connectionData.getConnection();
+            String SQL = "select count(*) as cnt from Attend where User_id = ? and status = ?";
+
+            PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, userID);
+            pstmt.setString(2, status);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+                workingDay = rs.getInt("cnt");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return workingDay;
     }
 }
