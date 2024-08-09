@@ -15,10 +15,11 @@ public class hr_question {
         bw.write("==== 인적 자원 관리 시스템 ====");
         bw.newLine();
 
-        bw.write("1. 근태 관리 *\n" +
-                "0. 종료 *\n" +
+        bw.write("1. 근태 관리 \n" +
+                "0. 종료 \n" +
                 "선택하세요 : ");
         bw.flush();
+        bw.newLine();
 
         int selectNum = Integer.parseInt(bf.readLine());
         if(selectNum==1) hr_question_manage();
@@ -29,6 +30,7 @@ public class hr_question {
             hr_question_start();
         }
     }
+
     public void hr_question_end() throws IOException{
         bw.write("...");
         bw.flush();
@@ -38,15 +40,17 @@ public class hr_question {
         bw.write("==== 근태 관리 ====");
         bw.newLine();
 
-        bw.write("1. 근태 입력 (option)\n" +
-                "2. 근태 수정 *\n" +
-                "3. 근태 삭제 *\n" +
-                "4. 부서별 월별 근태 현황 보기 *\n" +
-                "0. 메인 메뉴로 돌아가기 *\n" +
+        bw.write("1. 근태 입력\n" +
+                "2. 근태 수정 \n" +
+                "3. 근태 삭제 \n" +
+                "4. 부서별 월별 근태 현황 보기 \n" +
+                "0. 메인 메뉴로 돌아가기 \n" +
                 "\n" +
                 "선택하세요:");
         bw.flush();
+        bw.newLine();
         hr_question_select(Integer.parseInt(bf.readLine()));
+
     }
 
     public void hr_question_select(int s) throws IOException {
@@ -61,7 +65,7 @@ public class hr_question {
                 hr_delete_data();
                 break;
             case 4:
-                hr_show_data();
+                hr_show_data02();
                 break;
             case 0:
                 hr_question_start();
@@ -97,14 +101,16 @@ public class hr_question {
         bw.write("==== 근태 삭제====");
         bw.newLine();
 
-        bw.write("직원 ID 입력: [EX: 12345]");
+        bw.write("직원 ID 입력 [EX: 1~4] : ");
         bw.flush();
         deleteList.add(bf.readLine());
-        bw.write("날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01]");
+        bw.write("날짜 입력 (YYYY-MM-DD) [EX: 2024-08-01] : ");
         bw.flush();
         deleteList.add(bf.readLine());
 
         hrManage.deleteData(deleteList);
+
+        hr_question_manage();
     }
 
     private void hr_modify_data() throws IOException{
@@ -112,46 +118,65 @@ public class hr_question {
         bw.write("==== 근태 수정 ====");
         bw.newLine();
 
-        bw.write("직원 ID 입력 : [EX: 12345]");
+        bw.write("직원 ID 입력 [EX: 1~4] : ");
         bw.flush();
         modifyList.add(bf.readLine());
 
-        bw.write("날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01]");
+        bw.write("날짜 입력 (YYYY-MM-DD) [EX: 2024-08-01] : ");
         bw.flush();
         modifyList.add(bf.readLine());
 
-        bw.write("근무 상태 입력 (출근/퇴근/휴가 등): [EX: 출근]");
+        bw.write("근무 상태 입력 (출근/결근/휴가) [EX: 출근] : ");
         bw.flush();
         modifyList.add(bf.readLine());
 
         hrManage.modifyData(modifyList);
+
+        hr_question_manage();
     }
 
     private void hr_insert_data() throws IOException{
         List<String> insertList = new ArrayList<>();
         bw.write("==== 근태 입력 ====");
+        bw.newLine();
 
-        bw.write("직원 ID 입력 : [EX: 12345]");
+        bw.write("직원 ID 입력 [EX: 1~4] : ");
         bw.flush();
         insertList.add(bf.readLine());
 
-        bw.write("날짜 입력 (YYYY-MM-DD): [EX: 2024-08-01]");
+        bw.write("날짜 입력 (YYYY-MM-DD) [EX: 2024-08-01] : ");
         bw.flush();
         insertList.add(bf.readLine());
 
-        bw.write("근무 상태 입력 (출근/퇴근/휴가 등): [EX: 출근]");
+        bw.write("근무 상태 입력 (출근/결근/휴가) [EX: 출근] : ");
         bw.flush();
         insertList.add(bf.readLine());
 
         if(hrManage.insertData(insertList)==1) {
             bw.write("데이터 입력 완료");
+            bw.newLine();
             bw.flush();
             hr_question_manage();
 //            입력 후 메뉴 선택으로 돌아감
         } else {
             bw.write("데이터 입력 실패 종료합니다.");
+            bw.newLine();
             bw.flush();
             hr_question_end();
         }
+    }
+
+    private void hr_show_data02() throws IOException {
+        bw.write("==== 부서별 월별 근태 현황 ====");
+        bw.newLine();
+        bw.flush();
+
+        hrManage.printAttendByDept();
+
+        bw.write("부서별 월별 근태 현황을 조회하였습니다.");
+        bw.flush();
+        bw.newLine();
+
+        hr_question_manage();
     }
 }
