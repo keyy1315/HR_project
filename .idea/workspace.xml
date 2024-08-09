@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3859fc79-5426-442a-8112-d70a065ef30e" name="Changes" comment="부서별 근태 정보 출력">
+    <list default="true" id="3859fc79-5426-442a-8112-d70a065ef30e" name="Changes" comment="출석률 계산을 위한 인서트문 대량 추가">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/keyy1315/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keyy1315/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/keyy1315/connectionData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keyy1315/ConnectionData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/keyy1315/hr_data_manage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keyy1315/HrRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/keyy1315/hr_question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keyy1315/HrService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,29 +51,30 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.hr-mini [:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Develops/Others/hr-mini/sql&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.hr-mini [:Main.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Develops/Others/hr-mini/sql",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Develops\Others\hr-mini\sql" />
@@ -125,7 +131,7 @@
       <updated>1723097421226</updated>
       <workItem from="1723097422297" duration="8160000" />
       <workItem from="1723106793777" duration="174000" />
-      <workItem from="1723162278414" duration="7043000" />
+      <workItem from="1723162278414" duration="12750000" />
     </task>
     <task id="LOCAL-00001" summary="sql schema, insert">
       <option name="closed" value="true" />
@@ -231,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723168377956</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="출석률 계산을 위한 인서트문 대량 추가">
+      <option name="closed" value="true" />
+      <created>1723169558678</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1723169558678</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +282,7 @@
     <MESSAGE value="출석률 계산을 위해 인서트 문 대량 추가" />
     <MESSAGE value="부서별 출석률 프린트 hr_show_data02() 메소드 추가" />
     <MESSAGE value="부서별 근태 정보 출력" />
-    <option name="LAST_COMMIT_MESSAGE" value="부서별 근태 정보 출력" />
+    <MESSAGE value="출석률 계산을 위한 인서트문 대량 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="출석률 계산을 위한 인서트문 대량 추가" />
   </component>
 </project>
