@@ -9,10 +9,35 @@ INSERT INTO User (User_id, Dept_id, user_Name) VALUES
 (3, 2, '신짱구'),
 (4, 3, '김영희');
 
-INSERT INTO Attend (Atd_no, User_id, Date, status) VALUES
-(1, 1, '2024-08-01', '출근'),
-(2, 2, '2024-08-01', '출근'),
-(3, 2, '2024-08-02', '출근'),
-(4, 3, '2024-08-01', '출근'),
-(5, 3, '2024-08-03', '출근'),
-(6, 3, '2024-08-07', '퇴근');
+INSERT INTO Attend (User_id, Date, status) VALUES (1, '2024-08-01', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (1, '2024-08-02', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (1, '2024-08-03', '휴가');
+INSERT INTO Attend (User_id, Date, status) VALUES (1, '2024-08-04', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (1, '2024-08-05', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (1, '2024-08-06', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (1, '2024-08-07', '퇴근');
+INSERT INTO Attend (User_id, Date, status) VALUES (1, '2024-08-08', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (2, '2024-08-01', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (2, '2024-08-02', '휴가');
+INSERT INTO Attend (User_id, Date, status) VALUES (2, '2024-08-03', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (2, '2024-08-04', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (2, '2024-08-05', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (2, '2024-08-06', '퇴근');
+INSERT INTO Attend (User_id, Date, status) VALUES (2, '2024-08-07', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (2, '2024-08-08', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (3, '2024-08-01', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (3, '2024-08-02', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (3, '2024-08-03', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (3, '2024-08-04', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (3, '2024-08-05', '휴가');
+INSERT INTO Attend (User_id, Date, status) VALUES (3, '2024-08-06', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (3, '2024-08-07', '퇴근');
+INSERT INTO Attend (User_id, Date, status) VALUES (3, '2024-08-08', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (4, '2024-08-01', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (4, '2024-08-02', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (4, '2024-08-03', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (4, '2024-08-04', '휴가');
+INSERT INTO Attend (User_id, Date, status) VALUES (4, '2024-08-05', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (4, '2024-08-06', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (4, '2024-08-07', '출근');
+INSERT INTO Attend (User_id, Date, status) VALUES (4, '2024-08-08', '퇴근');
