@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3859fc79-5426-442a-8112-d70a065ef30e" name="Changes" comment="init">
+    <list default="true" id="3859fc79-5426-442a-8112-d70a065ef30e" name="Changes" comment="부서별 근태 정보 출력">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/INSERT" beforeDir="false" afterPath="$PROJECT_DIR$/sql/INSERT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/keyy1315/hr_data_manage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keyy1315/hr_data_manage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/keyy1315/hr_question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/keyy1315/hr_question.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +125,7 @@
       <updated>1723097421226</updated>
       <workItem from="1723097422297" duration="8160000" />
       <workItem from="1723106793777" duration="174000" />
-      <workItem from="1723162278414" duration="5863000" />
+      <workItem from="1723162278414" duration="7043000" />
     </task>
     <task id="LOCAL-00001" summary="sql schema, insert">
       <option name="closed" value="true" />
@@ -202,7 +199,39 @@
       <option name="project" value="LOCAL" />
       <updated>1723167612391</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="init">
+      <option name="closed" value="true" />
+      <created>1723168233948</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1723168233948</updated>
+    </task>
+    <task id="LOCAL-00011" summary="출석률 계산을 위해 인서트 문 대량 추가">
+      <option name="closed" value="true" />
+      <created>1723168261174</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1723168261174</updated>
+    </task>
+    <task id="LOCAL-00012" summary="부서별 출석률 프린트 hr_show_data02() 메소드 추가">
+      <option name="closed" value="true" />
+      <created>1723168338087</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1723168338087</updated>
+    </task>
+    <task id="LOCAL-00013" summary="부서별 근태 정보 출력">
+      <option name="closed" value="true" />
+      <created>1723168377956</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1723168377956</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +265,9 @@
     <MESSAGE value="update" />
     <MESSAGE value="deleteData 메소드 구현" />
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="출석률 계산을 위해 인서트 문 대량 추가" />
+    <MESSAGE value="부서별 출석률 프린트 hr_show_data02() 메소드 추가" />
+    <MESSAGE value="부서별 근태 정보 출력" />
+    <option name="LAST_COMMIT_MESSAGE" value="부서별 근태 정보 출력" />
   </component>
 </project>
