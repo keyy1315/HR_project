@@ -1,7 +1,7 @@
 package keyy1315;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +43,7 @@ public class hr_data_manage {
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("데이터 수정 완료.");
+                System.out.println("수정되었습니다.");
             } else {
                 System.out.println("수정할 데이터가 없습니다.");
             }
@@ -148,4 +148,83 @@ public class hr_data_manage {
         }
         return workingDay;
     }
+
+
+
+    // 모든 부서명을 가져오는 메서드
+    private List<String> getAllDeptName() {
+        String sql = "SELECT dept_Name FROM Dept";
+        List<String> deptNames = new ArrayList<>();
+
+        try (Connection conn = connectionData.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                deptNames.add(rs.getString("dept_Name"));
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return deptNames;
+    }
+
+    // 부서별로 근태 정보를 조회하고 출력하는 메서드
+    public void printAttendByDept() {
+        List<String> deptNames = getAllDeptName();
+
+        for (String department : deptNames) {
+            getAttendByDept(department);
+        }
+    }
+
+    // 특정 부서의 근태 정보를 출력하는 메서드
+    private void getAttendByDept(String department) {
+        String sql = "SELECT u.user_id AS UserID, u.user_Name AS Employee, " +
+                "COUNT(CASE WHEN a.status = '출근' THEN 1 END) AS DaysPresent, " +
+                "COUNT(CASE WHEN a.status = '결근' THEN 1 END) AS DaysAbsent, " +
+                "COUNT(CASE WHEN a.status = '휴가' THEN 1 END) AS DaysOnLeave " +
+                "FROM Attend a " +
+                "JOIN User u ON a.User_id = u.User_id " +
+                "JOIN Dept d ON u.Dept_id = d.Dept_id " +
+                "WHERE d.dept_Name = ? AND MONTH(a.Date) = 8 AND YEAR(a.Date) = 2024 " +
+                "GROUP BY u.user_id, u.user_Name " +
+                "ORDER BY u.user_id";
+
+        try (Connection conn = connectionData.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, department); // 부서명
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                System.out.println("부서: " + department);
+                System.out.println("2024년 8월 근태 현황:");
+
+                while (rs.next()) {
+                    int userId = rs.getInt("UserID");
+                    String employee = rs.getString("Employee");
+                    int daysPresent = rs.getInt("DaysPresent");
+                    int daysAbsent = rs.getInt("DaysAbsent");
+                    int daysOnLeave = rs.getInt("DaysOnLeave");
+
+                    // 출석률 계산
+                    double attendanceRate = (double) daysPresent / 24 * 100;
+
+                    System.out.printf("- 직원 ID: %d, 이름: %s\n", userId, employee);
+                    System.out.printf("  - 출근율 : %.2f%%\n", attendanceRate);
+                    System.out.printf("  - 출근: %d일, 결근: %d일, 휴가: %d일\n",
+                            daysPresent, daysAbsent, daysOnLeave);
+                    System.out.println();
+                }
+
+                System.out.println("------------------------");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }
